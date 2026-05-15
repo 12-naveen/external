@@ -458,3 +458,35 @@ GPIO.output(18,False)
 
 time.sleep(2)
 
+======================================================================================
+
+INTEGRATION OF LED AND SWITCH
+
+Interfacing: Connect one terminal of the push button to a digital pin on the Arduino (e.g., Pin 2).
+Connect the other terminal of the push button to the ground (GND) of the Arduino.
+Connect a resistor (typically 10k ohms) from the same digital pin (e.g., Pin 2) to
+the 5V supply (to create an external pull-up resistor).
+
+const int buttonPin = 5; // Pin connected to the push button
+const int ledPin = 13; // Pin connected to an LED
+void setup() {
+pinMode(buttonPin, INPUT_PULLUP); // Set buttonPin as an input
+pinMode(ledPin, OUTPUT); // Set ledPin as an output
+Serial.begin(9600);
+}
+void loop() {
+
+11
+
+int buttonState = digitalRead(buttonPin); // Read the state of the button
+Serial.println(buttonState);
+if (buttonState == HIGH)
+{
+digitalWrite(ledPin, HIGH); // Turn on the LED when the button is pressed
+}
+else
+{
+digitalWrite(ledPin, LOW); // Turn off the LED when the button is not
+pressed
+}
+}
